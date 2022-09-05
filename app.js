@@ -7,8 +7,7 @@ app.get('/', function(req, res) {
 var city = req.query.city;
 var request = require('request');
 
-let url = `https://api.openweathermap.org/data/2.5/weather?`
-+`q=${city}&appid=7a136a981d423dc95f750eda74e46281`
+let url = `https://api.openweathermap.org/data/2.5/weather?`+`q=${city}&appid=7a136a981d423dc95f750eda74e46281`
 
 request({ url: url, json: true }, function (err, response) {
 if (err)
@@ -27,7 +26,7 @@ console.log('The high today in '+city+' is '
 console.log('Humidity today is '
 + response.body.main.humidity
 );
-res.send(response.body);
+res.send({temp:response.body.main.temp});
 }
 });
 });
